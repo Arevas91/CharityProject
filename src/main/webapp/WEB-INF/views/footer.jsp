@@ -23,6 +23,6 @@
     </div>
 </footer>
 
-<script src="<c:url value="resources/js/app.js"/>"></script>
+<%@include file="/WEB-INF/views/script.jsp" %>
 </body>
 </html>

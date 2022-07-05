@@ -2,6 +2,7 @@ package pl.coderslab.charity.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.coderslab.charity.domain.Donation;
 import pl.coderslab.charity.repository.DonationRepository;
 
 @Service
@@ -24,4 +25,7 @@ public class DonationService {
         }
     }
 
+    public Donation createNewDonation(Donation donation) {
+        return donationRepository.save(donation);
+    }
 }

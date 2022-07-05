@@ -164,11 +164,56 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
-    }
 
+      function getCategory() {
+        return Array.from(document.querySelectorAll('input[type="checkbox"]')).filter((checkbox) => checkbox.checked)
+            .map((checkbox) => checkbox.getAttribute('itemName'));
+      }
+
+      function getInstitution() {
+        return Array.from(document.querySelectorAll('input[type="radio"]')).filter((radio) => radio.checked)
+            .map((radio) => radio.getAttribute('itemName'));
+      }
+
+      if (this.currentStep == 5) {
+        let category = getCategory();
+        let quantity = document.getElementById('quantity').value;
+        let institution = getInstitution();
+        let street = document.getElementById('street').value;
+        let city = document.getElementById('city').value;
+        let zipCode = document.getElementById('zipCode').value;
+        let phoneNumber = document.getElementById('phoneNumber').value;
+        let pickUpDate = document.getElementById('pickUpDate').value;
+        let pickUpTime = document.getElementById('pickUpTime').value;
+        let pickUpComment = document.getElementById('pickUpComment').value;
+
+
+        let foundation;
+        let categories = "";
+        category.forEach((name, index) => {
+          categories += name + ', ';
+        })
+
+        institution.forEach((name) => {
+          foundation = name;
+        })
+
+        document.getElementById('quantityValue').innerHTML = `${quantity} worki z kategorii ${categories}`
+        document.getElementById('forInstitution').innerHTML = `Dla fundacji "${institution}"`
+        document.getElementById('yourStreet').innerHTML = `${street}`
+        document.getElementById('yourCity').innerHTML = `${city}`
+        document.getElementById('yourZipCode').innerHTML = `${zipCode}`
+        document.getElementById('yourPhoneNumber').innerHTML = `${phoneNumber}`
+        document.getElementById('chosenDate').innerHTML = `${pickUpDate}`
+        document.getElementById('chosenTime').innerHTML = `${pickUpTime}`
+        document.getElementById('comment').innerHTML = `${pickUpComment}`
+      }
+    }
   }
   const form = document.querySelector(".form--steps");
   if (form !== null) {
     new FormSteps(form);
   }
 });
+
+

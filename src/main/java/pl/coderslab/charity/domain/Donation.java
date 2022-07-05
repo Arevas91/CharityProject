@@ -42,7 +42,7 @@ public class Donation {
     @Column(nullable = false)
     private String street;
 
-    @Pattern(regexp = "[A-Za-z-]{2,20}")
+    @Pattern(regexp = "[A-Za-z-\\s\\D]{2,20}")
     @NotBlank
     @Column(nullable = false)
     private String city;
