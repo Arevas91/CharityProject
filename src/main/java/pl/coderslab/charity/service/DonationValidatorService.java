@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 @Service
 public class DonationValidatorService {
 
-    public static final Pattern VALID_CITIES = Pattern.compile("[A-Za-z-]{2,20}", Pattern.CASE_INSENSITIVE);
+    public static final Pattern VALID_CITIES = Pattern.compile("[A-Za-z]{2,20}", Pattern.CASE_INSENSITIVE);
     public static final Pattern VALID_STREETS = Pattern.compile("[A-Za-z0-9]{2,30}");
     public static final Pattern VALID_ZIPCODE = Pattern.compile("[0-9][0-9]-[0-9][0-9][0-9]", Pattern.CASE_INSENSITIVE);
     public static final Pattern VALID_PHONENUMBER = Pattern.compile("[0-9]{9}", Pattern.CASE_INSENSITIVE);
